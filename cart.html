@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="cart.css" />
+    <title>SHOP CO E-CORMMERCE WEBSIT</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="temporaryContent">
+      <div class="flexBox1">
+        <div class="addItem" id="cart-container">
+          <!--  -->
+          <!-- <div class="itemz">
+            <div class="itemzBox">
+              <img src="/image/image 8.png" alt="" />
+              <div class="conItemz">
+                <div class="namez">CoPilot / Black / Automatic</div>
+                <div class="pricez">$550 / 1 product</div>
+              </div>
+            </div>
+            <div class="itemzBox2">
+              <i class="material-symbols-outlined"> delete </i>
+
+              <div class="quantityz">
+                <button>-</button>
+                <span class="value">3</span>
+                <button>+</button>
+              </div>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="summary">
+          <h4>Order of summary</h4>
+
+          <div class="Frame07">
+            <p>subtotal <span>$565</span></p>
+            <p>Discount (-20%) <span>$565</span></p>
+            <p>Delivery Fee <span>$565</span></p>
+            <p>Total<span>$565</span></p>
+          </div>
+          <div class="summaryBtn">
+            <input type="text" placeholder="Add promo code" />
+            <button type="button">Apply</button>
+          </div>
+
+          <button class="btnCheck" type="button">Go to checkout</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Retrieve cart items from localStorage
+        const storedCartItems = localStorage.getItem("cartitems");
+        const cartitems = storedCartItems ? JSON.parse(storedCartItems) : [];
+
+        // Update the cart container
+        const cartContainer = document.querySelector("#cart-container");
+
+        if (cartitems.length === 0) {
+          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        } else {
+          cartitems.forEach((item) => {
+            const cartItemHTML = `
+            <div class="itemz">
+            <div class="itemzBox">
+              <img src="${item.image}" alt="${item.name}" width="50">
+              <div class="conItemz">
+                <div class="namez"> 
+                  <p>${item.name}</p>
+                  <p>Size: Large</p>
+                  <p>Color: white</p>
+                
+              
+                  </div>
+                <div class="pricez">  <p>$${item.price}</p></div>
+              </div>
+            </div>
+            <div class="itemzBox2">
+              <i class="material-symbols-outlined"> delete </i>
+
+              <div class="quantityz">
+                <button>-</button>
+                <span class="value">3</span>
+                <button>+</button>
+              </div>
+            </div>
+          </div>
+      `;
+            cartContainer.innerHTML += cartItemHTML;
+          });
+        }
+      });
+    </script>
+    <script src="detail.js" type="module"></script>
+  </body>
+</html>
+
+<!-- <div class="cart-item">
+  <img src="${item.image}" alt="${item.name}" width="50">
+  <p>${item.name}</p>
+  <p>$${item.price}</p>
+</div> -->

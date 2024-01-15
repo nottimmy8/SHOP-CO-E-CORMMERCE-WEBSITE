@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": " Polo with Contrast Trims",
+    "price": 212,
+    "description": "This graphic polo with constrast trims which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-11.png"
+  },
+  {
+    "id": 2,
+    "name": " Gradient Graphic T-shirt",
+    "price": 145,
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-12.png"
+  },
+  {
+    "id": 3,
+    "name": " Polo with Tipping Details",
+    "price": 180,
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-13.png"
+  },
+  {
+    "id": 4,
+    "name": "Black Striped T-shirt",
+    "price": 120,
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-14.png"
+  },
+  {
+    "id": 5,
+    "name": " T-SHIRT WITH TAPE DETAILS",
+    "price": 200,
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-9.png"
+  },
+  {
+    "id": 6,
+    "name": " SKINNY FIT JEANS",
+    "price": 250,
+    "description": "This graphic skinny fit which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-10.png"
+  },
+  {
+    "id": 7,
+    "name": " CHECKERED SHIRT",
+    "price": 290,
+    "description": "This graphic  checkered shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-2.png"
+  },
+  {
+    "id": 8,
+    "name": " SLEEVE STRIPED T-SHIRT",
+    "price": 200,
+    "description": "This graphic  sleeve striped t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-1.png"
+  },
+  {
+    "id": 9,
+    "name": "VERTICAL STRIPED SHIRT",
+    "price": 300,
+    "description": "This graphic vertical striped shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-7.png"
+  },
+  {
+    "id": 10,
+    "name": " COURAGE GRAPHIC T-SHIRT",
+    "price": 200,
+    "description": "This graphic courage t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-3.png"
+  },
+  {
+    "id": 11,
+    "name": " LOOSE BERMUDA SHORTS",
+    "price": 200,
+    "description": "This graphic  LOOSE BERMUDA SHORTS which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-4.png"
+  },
+  {
+    "id": 12,
+    "name": " FADED SKINNY JEANS",
+    "price": 200,
+    "description": "This graphic  faded skinny jeans which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+    "image": "IMG/img-8.png"
+  }
+]

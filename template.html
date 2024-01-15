@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- link style -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- GOOGLE ICON -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <title>SHOP CO E-CORMMERCE WEBSITE</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div class="header">
+      <!-- NAVBAR -->
+      <nav class="navBar">
+        <!-- MENUITEMS -->
+        <div class="menuItems">
+          <!-- MENUBTN -->
+          <div class="menuBtn">
+            <i class="material-symbols-outlined"> menu </i>
+          </div>
+          <!-- LOGO -->
+          <div class="logo" onclick="window.location.href='index.html'">
+            <img src="/image/SHOP.CO.png" alt="" />
+          </div>
+        </div>
+        <!-- NAV LINKS -->
+        <ul class="links">
+          <li class="active">
+            <a href="#"
+              >Shop
+              <svg
+                class="iconShop"
+                class="w-6 h-6 text-gray-800 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 8"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-content">
+              <a href="#">For men</a>
+              <a href="#"> women</a>
+            </div>
+          </li>
+          <li><a href="#">On Sale</a></li>
+          <li><a href="#productlist">New Arrivals</a></li>
+          <li><a href="#FRAME06">Brands</a></li>
+        </ul>
+
+        <!-- SEARCH BTN -->
+        <div class="searchBtn">
+          <img src="/image/search.png" width="20" height="20" alt="" />
+          <input
+            type="search"
+            placeholder="Search for products..."
+            class="searchInput"
+          />
+        </div>
+
+        <!-- MENU ITEMS -->
+        <div class="menuItems">
+          <!-- SEARCH IMG -->
+          <img
+            src="/image/search.png"
+            class="searchIcon"
+            width="20"
+            height="20"
+            alt=""
+          />
+          <!-- CART IMG -->
+          <div class="icon-cart" onclick="window.location.href='cart.html'">
+            <svg
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 18 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"
+              />
+            </svg>
+            <span id="cartnum"></span>
+          </div>
+          <!-- PROFILE IMG -->
+          <img src="/image/profile.png" alt="" />
+        </div>
+      </nav>
+
+      <!-- SIDENAV -->
+      <div class="sideNav">
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">On Sale</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Brands</a></li>
+      </div>
+    </div>
+
+    <!--  -->
+
+    <div id="contentTab"></div>
+
+    <!-- LATEST UPDATE -->
+    <div class="updateBox">
+      <h3>STAY UPTO DATE ABOUT <br />OUR LATEST OFFERS</h3>
+      <div class="formz">
+        <button>Enter your email address</button>
+        <button type="button">Subscribe to Newsletter</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footerGrid">
+        <!-- about -->
+        <div class="itemzz about">
+          <h1>SHOP.CO</h1>
+          <p>
+            We have clothes that suits your style and which you’re proud to
+            wear. From women to men.
+          </p>
+          <div class="socials">
+            <img src="/image/1.png" alt="" />
+            <img src="/image/2.png" alt="" />
+            <img src="/image/3.png" alt="" />
+            <img src="/image/4.png" alt="" />
+          </div>
+        </div>
+
+        <!-- company -->
+        <div class="itemzz company">
+          <h2>COMPANY</h2>
+          <ul>
+            <li><a href="">About</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">Works</a></li>
+            <li><a href="">Career</a></li>
+          </ul>
+        </div>
+
+        <!-- help -->
+        <div class="itemzz help">
+          <h2>HELP</h2>
+          <ul>
+            <li><a href="">About</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">Works</a></li>
+            <li><a href="">Career</a></li>
+          </ul>
+        </div>
+
+        <!-- faq -->
+        <div class="itemzz faq">
+          <h2>F A Q</h2>
+          <ul>
+            <li><a href="">Account</a></li>
+            <li><a href="">Mabnage Deliveries</a></li>
+            <li><a href="">Order</a></li>
+            <li><a href="">Payment</a></li>
+          </ul>
+        </div>
+
+        <!-- resources -->
+        <div class="itemzz faq">
+          <h2>F A Q</h2>
+          <ul>
+            <li><a href="">Free eBooks</a></li>
+            <li><a href="">Development Tutorial</a></li>
+            <li><a href="">How to - Blog</a></li>
+            <li><a href="">Youtube Playlist</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reserved">
+        <p>© 2000-2021, All rights reserved</p>
+        <img src="/image/Frame 53.png" alt="" />
+      </div>
+    </footer>
+
+    <script src="menu.js" type="module"></script>
+    <script src="detail.js"></script>
+  </body>
+</html>
