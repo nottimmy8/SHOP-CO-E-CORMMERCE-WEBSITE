@@ -68,17 +68,16 @@
             const cartItemHTML = `
             <div class="itemz">
             <div class="itemzBox">
-              <img src="${item.image}" alt="${item.name}" width="50">
-              <div class="conItemz">
-                <div class="namez"> 
-                  <p>${item.name}</p>
-                  <p>Size: Large</p>
-                  <p>Color: white</p>
-                
-              
-                  </div>
-                <div class="pricez">  <p>$${item.price}</p></div>
+             <div class="itemzIMG"> <img src="${item.image}" alt="${item.name}" width="50"></div>
+             <div class="itemzTxT">
+            <div class="">
+              <p class="name">${item.name}</p>
+              <p>Size:${item.large} </p>
+              <p>Color:${item.color} </p>
+            </div>
+              <p class="pricez">$${item.price}</p>
               </div>
+              
             </div>
             <div class="itemzBox2">
               <i class="material-symbols-outlined"> delete </i>
@@ -104,4 +103,15 @@
   <img src="${item.image}" alt="${item.name}" width="50">
   <p>${item.name}</p>
   <p>$${item.price}</p>
+</div> -->
+
+<!-- <div class="conItemz">
+  <div class="namez"> 
+    <p>${item.name}</p>
+    <p>Size: Large</p>
+    <p>Color: white</p>
+  
+
+    </div>
+  <div class="pricez">  <p>$${item.price}</p></div>
 </div> -->

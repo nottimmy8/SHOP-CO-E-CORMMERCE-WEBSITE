@@ -20,7 +20,7 @@ loadTemplate();
 // PRODUCT LIST
 let displayProducts = async () => {
   // Fetch the products from the products.json file
-  let products = await fetch("https://fakestoreapi.com/products");
+  let products = await fetch("products.json");
 
   // Convert the fetched products to JSON format
   let productList = await products.json();
@@ -71,7 +71,7 @@ displayProducts();
 let displayItems = async () => {
   try {
     // Fetch the products from the products.json file
-    let response = await fetch("https://fakestoreapi.com/products");
+    let response = await fetch("products.json");
     let productList = await response.json();
 
     // Log the product list to the console

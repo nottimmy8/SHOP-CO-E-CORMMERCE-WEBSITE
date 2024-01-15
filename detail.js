@@ -20,10 +20,10 @@ loadTemplate();
 
 // Initialize the application
 const initApp = async () => {
-  let response = await fetch("https://fakestoreapi.com/products");
+  let response = await fetch("products.json");
   let products = await response.json();
   let cartCount = 0;
-  let cartitems = [];
+  let cartitems = JSON.parse(localStorage.getItem("cartitems")) || [];
   let cartlength = cartitems.length;
   document.querySelector("#cartnum").innerText = cartlength;
 
@@ -173,7 +173,7 @@ initApp();
 // PRODUCT LIST
 let displayProducts = async () => {
   // Fetch the products from the products.json file
-  let products = await fetch("https://fakestoreapi.com/products");
+  let products = await fetch("products.json");
 
   // Convert the fetched products to JSON format
   let productList = await products.json();
