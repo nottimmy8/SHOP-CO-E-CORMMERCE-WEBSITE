@@ -135,36 +135,51 @@ const initApp = async () => {
         }
       });
 
+      const updateCartCount = (cartCount) => {
+        document.querySelector(".cartCount").innerText = cartCount;
+      };
+
       const addtocart = () => {
-        // Add the current product to the cartItems array
-        cartitems.push({
-          id: info.id,
-          name: info.name,
-          image: info.image,
-          price: info.price,
-        });
+        if (cartCount > 0) {
+          // Find the index of the product in the cartItems array
+          const existingProductIndex = cartitems.findIndex(
+            (item) =>
+              item.id === info.id &&
+              item.size === selectedSize &&
+              item.color === selectedColor
+          );
+          // If the product already exists in the cart, update the quantity
+          if (existingProductIndex !== -1) {
+            cartitems[existingProductIndex].quantity += cartCount;
+          } else {
+            // Add the current product to the cartItems array
+            cartitems.push({
+              id: info.id,
+              name: info.name,
+              image: info.image,
+              price: info.price,
+              quantity: cartCount,
+            });
+          }
 
-        cartlength++;
-        // cartlength = cartitems.length;
-        document.querySelector("#cartnum").innerText = cartlength;
+          cartlength++;
+          // cartlength = cartitems.length;
+          document.querySelector("#cartnum").innerText = cartlength;
 
-        // Store the cart items in localStorage
-        localStorage.setItem("cartitems", JSON.stringify(cartitems));
+          // Store the cart items in localStorage
+          localStorage.setItem("cartitems", JSON.stringify(cartitems));
 
-        // Update the cart count
-        updateCartCount();
+          // Update the cart count
+          updateCartCount();
 
-        // Optionally, you can navigate to the cart.html page
-        // window.location.href = "cart.html";
+          // Optionally, you can navigate to the cart.html page
+          // window.location.href = "cart.html";
+        }
       };
 
       document.querySelector(".cartBtn").addEventListener("click", addtocart);
     }
   }
-};
-
-const updateCartCount = (cartCount) => {
-  document.querySelector(".cartCount").innerText = cartCount;
 };
 
 // Call the function

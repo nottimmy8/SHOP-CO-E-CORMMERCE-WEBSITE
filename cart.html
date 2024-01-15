@@ -56,45 +56,84 @@
       document.addEventListener("DOMContentLoaded", function () {
         // Retrieve cart items from localStorage
         const storedCartItems = localStorage.getItem("cartitems");
-        const cartitems = storedCartItems ? JSON.parse(storedCartItems) : [];
+        let cartitems = storedCartItems ? JSON.parse(storedCartItems) : [];
 
         // Update the cart container
         const cartContainer = document.querySelector("#cart-container");
 
-        if (cartitems.length === 0) {
-          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-        } else {
-          cartitems.forEach((item) => {
-            const cartItemHTML = `
-            <div class="itemz">
-            <div class="itemzBox">
-             <div class="itemzIMG"> <img src="${item.image}" alt="${item.name}" width="50"></div>
-             <div class="itemzTxT">
-            <div class="">
-              <p class="name">${item.name}</p>
-              <p>Size:${item.large} </p>
-              <p>Color:${item.color} </p>
-            </div>
-              <p class="pricez">$${item.price}</p>
-              </div>
-              
-            </div>
-            <div class="itemzBox2">
-              <div class="deleteBtn"> <i class="material-symbols-outlined"> delete </i> </div>
+        function updateCart() {
+          if (cartitems.length === 0) {
+            cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+          } else {
+            const uniqueProducts = {};
 
-              <div class="quantityz">
-                <button>-</button>
-                <span class="value">3</span>
-                <button>+</button>
-              </div>
-            </div>
-          </div>
-      `;
+            cartContainer.innerHTML = ""; // Clear the cart container
 
-            
-            cartContainer.innerHTML += cartItemHTML;
-          });
+            cartitems.forEach((item, index) => {
+              const productKey = `${item.id}_${item.size}_${item.color}`;
+              if (!uniqueProducts[productKey]) {
+                uniqueProducts[productKey] = item;
+
+                const cartItemHTML = `
+                  <div class="itemz">
+                    <div class="itemzBox">
+                      <div class="itemzIMG">
+                        <img src="${item.image}" alt="${item.name}" width="50">
+                      </div>
+                      <div class="itemzTxT">
+                        <div class="">
+                          <p class="name">${item.name}</p>
+                          <p>Size: ${item.size}</p>
+                          <p>Color: ${item.color}</p>
+                        </div>
+                        <p class="pricez">$${item.price}</p>
+                      </div>
+                    </div>
+                    <div class="itemzBox2">
+                      <div class="deleteBtn" data-index="${index}">
+                        <i class="material-symbols-outlined"> delete </i>
+                      </div>
+    
+                      <div class="quantityy">
+                        <span class="minus">-</span>
+                        <span class="cartCount">${item.quantity}</span>
+                        <span class="plus">+</span>
+                      </div>
+                    </div>
+                  </div>
+                `;
+
+                cartContainer.innerHTML += cartItemHTML;
+              } else {
+                // If the product key exists, update the quantity
+                uniqueProducts[productKey].quantity += item.quantity;
+              }
+            });
+
+            // Add click event listener to the delete button
+            const deleteBtns = document.querySelectorAll(".deleteBtn");
+            deleteBtns.forEach((deleteBtn) => {
+              deleteBtn.addEventListener("click", function () {
+                const index = parseInt(
+                  deleteBtn.getAttribute("data-index"),
+                  10
+                );
+
+                // Remove the item from the cartitems array
+                cartitems.splice(index, 1);
+
+                // Update localStorage with the modified cartitems array
+                localStorage.setItem("cartitems", JSON.stringify(cartitems));
+
+                // Update the cart display
+                updateCart();
+              });
+            });
+          }
         }
+
+        // Initial update of the cart
+        updateCart();
       });
     </script>
     <script src="detail.js" type="module"></script>
