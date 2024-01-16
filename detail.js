@@ -146,7 +146,6 @@ const initApp = async () => {
               item.size === selectedSize &&
               item.color === selectedColor
           );
-
           // If the product already exists in the cart, update the quantity
           if (existingProductIndex !== -1) {
             cartitems[existingProductIndex].quantity += cartCount;
@@ -170,9 +169,6 @@ const initApp = async () => {
 
           // Update the cart count
           updateCartCount();
-
-          // Optionally, you can navigate to the cart.html page
-          // window.location.href = "cart.html";
         }
       };
 

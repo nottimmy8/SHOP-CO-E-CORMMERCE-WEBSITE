@@ -56,90 +56,74 @@
       document.addEventListener("DOMContentLoaded", function () {
         // Retrieve cart items from localStorage
         const storedCartItems = localStorage.getItem("cartitems");
-        const cartitems = storedCartItems ? JSON.parse(storedCartItems) : [];
+        let cartitems = storedCartItems ? JSON.parse(storedCartItems) : [];
 
         // Update the cart container
         const cartContainer = document.querySelector("#cart-container");
 
-        if (cartitems.length === 0) {
-          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-        } else {
-          cartitems.forEach((item, index) => {
-            const cartItemHTML = `
-          <div class="itemz">
-            <div class="itemzBox">
-              <div class="itemzIMG">
-                <img src="${item.image}" alt="${item.name}" width="50">
-              </div>
-              <div class="itemzTxT">
-                <div class="">
-                  <p class="name">${item.name}</p>
-                  <p>Size: ${item.size}</p>
-                  <p>Color: ${item.color}</p>
-                </div>
-                <p class="pricez">$${item.price}</p>
-              </div>
-            </div>
-            <div class="itemzBox2">
-              <div class="deleteBtn" data-index="${index}">
-                <i class="material-symbols-outlined"> delete </i>
-              </div>
+        function updateCart() {
+          if (cartitems.length === 0) {
+            cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+          } else {
+            const uniqueProducts = {};
 
-              <div class="quantityy">
-                <span class="minus">-</span>
-                <span class="cartCount" data-quantity="${item.quantity}">${item.quantity}</span>
-                <span class="plus">+</span>
-              </div>
-            </div>
-          </div>
-        `;
+            cartContainer.innerHTML = ""; // Clear the cart container
 
-            cartContainer.innerHTML += cartItemHTML;
-          });
+            cartitems.forEach((item, index) => {
+              const productKey = `${item.id}_${item.size}_${item.color}`;
+              if (!uniqueProducts[productKey]) {
+                uniqueProducts[productKey] = item;
 
-          // Add event listeners for delete button
-          const deleteBtns = document.querySelectorAll(".deleteBtn");
-          deleteBtns.forEach((btn, index) => {
-            btn.addEventListener("click", function () {
-              // Remove item from cartitems array
-              cartitems.splice(index, 1);
+                const cartItemHTML = `
+                  <div class="itemz">
+                    <div class="itemzBox">
+                      <div class="itemzIMG">
+                        <img src="${item.image}" alt="${item.name}" width="50">
+                      </div>
+                      <div class="itemzTxT">
+                        <div class="">
+                          <p class="name">${item.name}</p>
+                          <p>Size: ${item.size}</p>
+                          <p>Color: ${item.color}</p>
+                        </div>
+                        <p class="pricez">$${item.price}</p>
+                      </div>
+                    </div>
+                    <div class="itemzBox2"> 
+                      <div class="deleteBtn" onclick="removeCartItem(${index})">
+                        <i class="material-symbols-outlined"> delete </i>
+                      </div>
+    
+                      <div class="quantityy">
+                        <span class="minus">-</span>
+                        <span class="cartCount">${item.quantity}</span>
+                        <span class="plus">+</span>
+                      </div>
+                    </div>
+                  </div>
+                `;
 
-              // Update localStorage with modified cartitems
-              localStorage.setItem("cartitems", JSON.stringify(cartitems));
-
-              // Update the cart container
-              updateCartContainer();
-            });
-          });
-
-          // Add event listeners for plus and minus buttons
-          const plusBtns = document.querySelectorAll(".plus");
-          const minusBtns = document.querySelectorAll(".minus");
-
-          plusBtns.forEach((btn, index) => {
-            btn.addEventListener("click", function () {
-              cartitems[index].quantity++;
-              document.querySelector(
-                `.cartCount[data-quantity="${cartitems[index].quantity}"]`
-              ).innerText = cartitems[index].quantity;
-              updateCartCount();
-            });
-          });
-
-          minusBtns.forEach((btn, index) => {
-            btn.addEventListener("click", function () {
-              if (cartitems[index].quantity > 1) {
-                cartitems[index].quantity--;
-                document.querySelector(
-                  `.cartCount[data-quantity="${cartitems[index].quantity}"]`
-                ).innerText = cartitems[index].quantity;
-                updateCartCount();
+                cartContainer.innerHTML += cartItemHTML;
+              } else {
+                // If the product key exists, update the quantity
+                uniqueProducts[productKey].quantity += item.quantity;
               }
             });
-          });
+          }
         }
 
-        // Your existing updateCartContainer code here
+        // Initial update of the cart
+        updateCart();
+
+        function removeCartItem(index) {
+          let cartItems = JSON.parse(localStorage.getItems("cartitems"));
+
+          cartItems.splice(index, 1);
+          localStorage.getItem("cartitems", JSON.stringify(cartItems));
+
+          updateCart();
+        }
+        console.log(removeCartItem);
       });
     </script>
     <script src="detail.js" type="module"></script>
