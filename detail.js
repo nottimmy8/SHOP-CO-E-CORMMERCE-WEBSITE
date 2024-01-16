@@ -123,11 +123,11 @@ const initApp = async () => {
 
       Shop.innerHTML = productHTML;
 
-      document.querySelector(".quantityy .cartCount").innerText = 1;
-
       document.querySelector(".plus").addEventListener("click", function () {
-        cartCount++;
-        document.querySelector(".quantityy .cartCount").innerText = cartCount;
+        if (cartCount < info.quantity) {
+          cartCount++;
+          document.querySelector(".quantityy .cartCount").innerText = cartCount;
+        }
       });
 
       document.querySelector(".minus").addEventListener("click", function () {

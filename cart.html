@@ -91,8 +91,9 @@
                     </div>
                     <div class="itemzBox2"> 
                       <div class="deleteBtn" onclick="removeCartItem(${index})">
-                        <i class="material-symbols-outlined"> delete </i>
-                      </div>
+                <i class="material-symbols-outlined"> delete </i>
+              </div>
+
     
                       <div class="quantityy">
                         <span class="minus">-</span>
@@ -115,15 +116,20 @@
         // Initial update of the cart
         updateCart();
 
-        function removeCartItem(index) {
-          let cartItems = JSON.parse(localStorage.getItems("cartitems"));
-
-          cartItems.splice(index, 1);
-          localStorage.getItem("cartitems", JSON.stringify(cartItems));
-
+        window.removeCartItem = function (index) {
+          cartitems.splice(index, 1);
+          localStorage.setItem("cartitems", JSON.stringify(cartitems));
           updateCart();
-        }
-        console.log(removeCartItem);
+        };
+
+        window.updateCartItemQuantity = function (index, change) {
+          const newQuantity = cartitems[index].quantity + change;
+          if (newQuantity > 0 && newQuantity <= cartitems[index].maxQuantity) {
+            cartitems[index].quantity = newQuantity;
+            localStorage.setItem("cartitems", JSON.stringify(cartitems));
+            updateCart();
+          }
+        };
       });
     </script>
     <script src="detail.js" type="module"></script>
