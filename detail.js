@@ -123,21 +123,19 @@ const initApp = async () => {
 
       Shop.innerHTML = productHTML;
 
+      document.querySelector(".quantityy .cartCount").innerText = 1;
+
       document.querySelector(".plus").addEventListener("click", function () {
         cartCount++;
-        updateCartCount(cartCount);
+        document.querySelector(".quantityy .cartCount").innerText = cartCount;
       });
 
       document.querySelector(".minus").addEventListener("click", function () {
-        if (cartCount > 0) {
+        if (cartCount > 1) {
           cartCount--;
-          updateCartCount(cartCount);
+          document.querySelector(".quantityy .cartCount").innerText = cartCount;
         }
       });
-
-      const updateCartCount = (cartCount) => {
-        document.querySelector(".cartCount").innerText = cartCount;
-      };
 
       const addtocart = () => {
         if (cartCount > 0) {
@@ -148,6 +146,7 @@ const initApp = async () => {
               item.size === selectedSize &&
               item.color === selectedColor
           );
+
           // If the product already exists in the cart, update the quantity
           if (existingProductIndex !== -1) {
             cartitems[existingProductIndex].quantity += cartCount;
@@ -162,8 +161,8 @@ const initApp = async () => {
             });
           }
 
-          cartlength++;
-          // cartlength = cartitems.length;
+          // cartlength++;
+          cartlength = cartitems.length;
           document.querySelector("#cartnum").innerText = cartlength;
 
           // Store the cart items in localStorage

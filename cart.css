@@ -206,15 +206,21 @@
   min-width: 100px;
   background-color: #f0f0f0;
   border-radius: 40px;
+  display: flex;
+  align-items: center;
 }
 
 .quantityy span {
   margin: 0px 5px;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .deleteBtn {
   background: red;
+}
+
+.cartCount p {
+  font-size: 18px;
 }
 
 /* #cart-container {
