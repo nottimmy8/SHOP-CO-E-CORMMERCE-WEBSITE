@@ -1,27 +1,73 @@
-//
-//
-//
+const cartItemHTML = `
+  <div class="itemz">
+    <div class="itemzBox">
+      <div class="itemzIMG">
+        <img src="${item.image}" alt="${item.name}" width="50">
+      </div>
+      <div class="itemzTxT">
+        <div class="">
+          <p class="name">${item.name}</p>
+          <p>Size: ${item.size}</p>
+          <p>Color: ${item.color}</p>
+        </div>
+        <p class="pricez">$${item.price}</p>
+      </div>
+    </div>
+    <div class="itemzBox2">
+      <div class="deleteBtn" data-index="${index}">
+        <i class="material-symbols-outlined"> delete </i>
+      </div>
 
-// Function to initialize the application
-const initApp = async () => {
-  let response = await fetch("https://fakestoreapi.com/products");
-  let products = await response.json();
+      <div class="quantityy">
+        <span class="minus">-</span>
+        <span class="cartCount" data-quantity="${item.quantity}">${item.quantity}</span>
+        <span class="plus">+</span>
+      </div>
+    </div>
+  </div>
+`;
 
-  let cartCount = 0;
-  let cartitems = JSON.parse(localStorage.getItem("cartitems")) || [];
+cartContainer.innerHTML += cartItemHTML;
 
-  // Display initial cart count
-  updateCartCount(cartitems.length);
+// Add event listener for delete button
+const deleteBtns = document.querySelectorAll(".deleteBtn");
+deleteBtns.forEach((btn, index) => {
+  btn.addEventListener("click", function () {
+    // Remove item from cartitems array
+    cartitems.splice(index, 1);
 
-  let productId = new URLSearchParams(window.location.search).get("id");
+    // Update localStorage with modified cartitems
+    localStorage.setItem("cartitems", JSON.stringify(cartitems));
 
-  if (productId) {
-    let info = products.find((value) => value.id == productId);
+    // Update the cart container
+    updateCartContainer();
+  });
+});
 
-    if (info) {
-      console.log(info);
-      displayProduct(info);
-      setupEventListeners(info);
+// Add event listeners for plus and minus buttons
+const plusBtns = document.querySelectorAll(".plus");
+const minusBtns = document.querySelectorAll(".minus");
+
+plusBtns.forEach((btn, index) => {
+  btn.addEventListener("click", function () {
+    cartitems[index].quantity++;
+    document.querySelector(
+      `.cartCount[data-quantity="${cartitems[index].quantity}"]`
+    ).innerText = cartitems[index].quantity;
+    updateCartCount();
+  });
+});
+
+minusBtns.forEach((btn, index) => {
+  btn.addEventListener("click", function () {
+    if (cartitems[index].quantity > 1) {
+      cartitems[index].quantity--;
+      document.querySelector(
+        `.cartCount[data-quantity="${cartitems[index].quantity}"]`
+      ).innerText = cartitems[index].quantity;
+      updateCartCount();
     }
-  }
-};
+  });
+});
+
+// Your existing updateCartContainer code here
