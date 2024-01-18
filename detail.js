@@ -22,7 +22,7 @@ loadTemplate();
 const initApp = async () => {
   let response = await fetch("products.json");
   let products = await response.json();
-  let cartCount = 0;
+  let cartCount = 1;
   let cartitems = JSON.parse(localStorage.getItem("cartitems")) || [];
   let cartlength = cartitems.length;
   document.querySelector("#cartnum").innerText = cartlength;
